@@ -177,7 +177,7 @@
                 <tr>
                     <td>{{ $class->id }}</td>
                     <td>
-                        <img width="50px" src=" {{ asset('storage/images/'  . $class->class_image) }}" alt="Class Image">
+                        <img width="50px" src=" {{ asset('storage/images/class/'  . $class->class_image) }}" alt="Class Image">
                     </td>
                     <td>{{ $class->class_title }}</td>
                     <td>{{ $class->class_teacher_name }}</td>
@@ -189,7 +189,7 @@
                     <td>{{ $class->class_page_title }}</td>
                     <td>{{ $class->class_page_description }}</td>
                     <td>
-                        <img width="50px" src="{{ asset('storage/images/' . $class->class_teacher_image) }}" alt="Teacher Image">
+                        <img width="50px" src="{{ asset('storage/images/teacher/' . $class->class_teacher_image) }}" alt="Teacher Image">
                     </td>
                     <td>{{ $class->created_at->diffForHumans() }}</td>
                     <td>
