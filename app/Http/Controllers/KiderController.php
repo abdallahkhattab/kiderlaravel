@@ -47,12 +47,4 @@ class KiderController extends Controller
         return view('kider.404');
     }
 
-
-
-
-
-
-
-
-
 }
