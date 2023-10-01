@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DASHBOARDController;
 use App\Http\Controllers\DashboardController as ControllersDashboardController;
+use App\Http\Controllers\POPULARTEACHERController;
 use App\Http\Controllers\SchoolClassController;
 use App\Http\Controllers\TestemonialsController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,9 @@ Route::prefix('/dashboard')->name('dashoboard.')->group(function () {
 
 
 
+   Route::resource('testemonial',TestemonialsController::class);
 
+
+   Route::resource('popularteacher',POPULARTEACHERController::class);
 
 });

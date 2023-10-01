@@ -15,7 +15,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Add New Schoolclass</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="{{ route('dashoboard.testemonial.store') }}" method="POST" id="add_schoolclass_form" enctype="multipart/form-data">
+      <form action="{{route('dashoboard.popularteacher.store')}}" method="POST" id="add_schoolclass_form" enctype="multipart/form-data">
         @csrf
         <div class="modal-body p-4 bg-light">
           <div class="row">
@@ -25,29 +25,34 @@
             </div>
             <div class="col-lg">
               <label for="description">page description</label>
-              <input type="text" name="page_description" class="form-control" placeholder="description" required>
+              <input type="text" name="description" class="form-control" placeholder="description" required>
             </div>
-
-            <div class="my-2">
-              <label for="description">client_name</label>
-              <input type="text" name="client_name" class="form-control" placeholder="description" required>
-            </div>
-
-            <div class="my-2">
-              <label for="description">client job</label>
-              <input type="text" name="client_job" class="form-control" placeholder="description" required>
-            </div>
-
-            <div class="my-2">
-              <label for="description">client comment</label>
-              <input type="text" name="client_comment" class="form-control" placeholder="description" required>
-            </div>
-          </div>
-          <div class="my-2">
-            <label for="image">Select client image</label>
-            <input type="file" name="client_image" class="form-control" required>
           </div>
        
+        
+         
+          <div class="my-2">
+            <label for="teacher name">teacher name</label>
+            <input type="text" name="teacher_name" class="form-control" placeholder="class title" required>
+          </div>
+        
+
+          <div class="my-2">
+            <label for="teacher job">teacher job</label>
+            <input type="text" name="teacher_job" class="form-control" placeholder="Post" required>
+          </div>
+
+
+          <div class="my-2">
+            <label for="teacher job">teacher facebook</label>
+            <input type="text" name="teacher_facebook" class="form-control" placeholder="Post" required>
+          </div>
+
+          <div class="my-2">
+            <label for="teacher image"> teacher image</label>
+            <input type="file" name="teacher_image" class="form-control" placeholder="teacher image" required>
+          </div>
+
          
         </div>
         <div class="modal-footer">
@@ -124,52 +129,56 @@
             <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addSchoolclassModal"><i
                 class="bi-plus-circle me-2"></i>Add New School class</button>
           </div>
-          <table class="table table-hover table-striped table-bordered">
-            <tr class="bg-dark text-white">
-              
-                <th>ID</th>
-                <th>page_title</th>
-                <th>page_description</th>
-                <th>client_name</th>
-                <th>client_job</th>
-                <th>client_image</th>
-                <th>client_comment</th>
-                <th>Created At</th>
-                <th>Actions</th>
-            </tr>
+          <div class="table-responsive">
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>ID</th>
+                        <th>Page Title</th>
+                        <th>Page Description</th>
+                        <th>Teacher Name</th>
+                        <th>Teacher Job</th>
+                        <th>Teacher Image</th>
+                        <th>Teacher Facebook</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($teachers as $teacher)
+                        <tr>
+                            <td>{{ $teacher->id }}</td>
+                            <td>{{ $teacher->page_title }}</td>
+                            <td>{{ $teacher->page_description }}</td>
+                            <td>{{ $teacher->teacher_name }}</td>
+                            <td>{{ $teacher->teacher_job }}</td>
+                            <td>
+                                <img width="50px" src="{{ asset('storage/images/teacher/' . $teacher->teacher_image) }}"
+                                    alt="Teacher Image">
+                            </td>
+                            <td>{{ $teacher->teacher_facebook }}</td>
+                            <td>{{ $teacher->created_at->diffForHumans() }}</td>
+                            <td>
+                                <form class="d-inline" action="{{ route('dashoboard.popularteacher.destroy', $teacher->id) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-sm btn-danger"
+                                        onclick="return confirm('Are you sure?')">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="9" style="text-align:center">
+                                No Data Found
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
         
-            @forelse ($testemonialdata as $testemonial)
-                <tr>
-                    <td>{{ $testemonial->id }}</td>
-                  
-                    <td>{{ $testemonial->page_title }}</td>
-                    <td>{{ $testemonial->page_description }}</td>
-                    <td>{{ $testemonial->client_name }}</td>
-                    <td>{{ $testemonial->client_job }}</td>
-                    <td>
-                      <img width="50px" src=" {{ asset('storage/images/testemonial/'  . $testemonial->client_image) }}" alt="Class Image">
-                  </td>
-                    <td>{{ $testemonial->client_comment }}</td>
-                 
-                    <td>{{ $testemonial->created_at->diffForHumans() }}</td>
-                    <td>
-                      <form class="d-inline" action="{{ route('dashoboard.testemonial.destroy', $testemonial->id) }}" method="POST">
-                        @csrf
-                            @method('delete')
-                            <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
-                                Delete
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="14" style="text-align:center">
-                        No Data Found
-                    </td>
-                </tr>
-            @endforelse
-        </table>
         
         </div>
       </div>

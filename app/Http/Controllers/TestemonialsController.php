@@ -86,5 +86,14 @@ class TestemonialsController extends Controller
     public function destroy(string $id)
     {
         //
+
+        TESTEMONIAL::destroy($id);
+
+        session()->flash('message', 'testemonial deleted successfully.');
+
+        // Redirect to the index or wherever you want
+        return redirect()->route('dashoboard.testemonial.index');
+
+
     }
 }
