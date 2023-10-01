@@ -126,8 +126,12 @@
           </div>
           <table class="table table-hover table-striped table-bordered">
             <tr class="bg-dark text-white">
+<<<<<<< HEAD
               'page_title','page_description','client_name',
               'client_job','client_image','client_comment'
+=======
+              
+>>>>>>> origin/master
                 <th>ID</th>
                 <th>page_title</th>
                 <th>page_description</th>
@@ -139,6 +143,7 @@
                 <th>Actions</th>
             </tr>
         
+<<<<<<< HEAD
             @forelse ($testemonials as $testemonial)
                 <tr>
                     <td>{{ $testemonial->id }}</td>
@@ -158,6 +163,25 @@
                     <td>
                         <form class="d-inline" action="" method="POST">
                             @csrf
+=======
+            @forelse ($testemonialdata as $testemonial)
+                <tr>
+                    <td>{{ $testemonial->id }}</td>
+                  
+                    <td>{{ $testemonial->page_title }}</td>
+                    <td>{{ $testemonial->page_description }}</td>
+                    <td>{{ $testemonial->client_name }}</td>
+                    <td>{{ $testemonial->client_job }}</td>
+                    <td>
+                      <img width="50px" src=" {{ asset('storage/images/testemonial/'  . $testemonial->client_image) }}" alt="Class Image">
+                  </td>
+                    <td>{{ $testemonial->client_comment }}</td>
+                 
+                    <td>{{ $testemonial->created_at->diffForHumans() }}</td>
+                    <td>
+                      <form class="d-inline" action="{{ route('dashoboard.testemonial.destroy', $testemonial->id) }}" method="POST">
+                        @csrf
+>>>>>>> origin/master
                             @method('delete')
                             <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
                                 Delete
@@ -174,7 +198,10 @@
             @endforelse
         </table>
         
+<<<<<<< HEAD
         {{ $classData->links() }}
+=======
+>>>>>>> origin/master
         </div>
       </div>
     </div>

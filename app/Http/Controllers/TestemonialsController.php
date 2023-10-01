@@ -14,8 +14,16 @@ class TestemonialsController extends Controller
     {
         //
 
+<<<<<<< HEAD
         $tetemonials = TESTEMONIAL::paginate(1);
         return view('admin.testemonial.testemonial ', compact('tetemonials'));
+=======
+        // Fetch the testemonial data from the database
+        $testemonialdata = Testemonial::all();
+
+        // Pass the data to the view
+        return view('admin.testemonial.testemonial', compact('testemonialdata'));
+>>>>>>> origin/master
     }
 
     /**
@@ -83,5 +91,17 @@ class TestemonialsController extends Controller
     public function destroy(string $id)
     {
         //
+<<<<<<< HEAD
+=======
+
+        TESTEMONIAL::destroy($id);
+
+        session()->flash('message', 'testemonial deleted successfully.');
+
+        // Redirect to the index or wherever you want
+        return redirect()->route('dashoboard.testemonial.index');
+
+
+>>>>>>> origin/master
     }
 }

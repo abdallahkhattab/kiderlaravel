@@ -48,7 +48,18 @@
                 <a href="{{ route('dashoboard.testemonial.index') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
+<<<<<<< HEAD
                     testemonial</p>
+=======
+                    school classes management</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('dashoboard.popularteacher.index') }}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                     add popular teacher</p>
+>>>>>>> origin/master
                 </a>
               </li>
              

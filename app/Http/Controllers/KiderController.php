@@ -47,6 +47,7 @@ class KiderController extends Controller
         return view('kider.404');
     }
 
+<<<<<<< HEAD
 
 
 
@@ -55,4 +56,6 @@ class KiderController extends Controller
 
 
 
+=======
+>>>>>>> origin/master
 }
